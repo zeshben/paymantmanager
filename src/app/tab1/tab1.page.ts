@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OrdersService } from '../services/orders.service';
 
 @Component({
   selector: 'app-tab1',
@@ -8,9 +9,18 @@ import { Component } from '@angular/core';
 export class Tab1Page {
 
 
-  pub
+  public orderNumber;
+  public status;
 
-  constructor() {}
+  constructor(private orderService: OrdersService) {}
+
+
+  sendOrder(): void {
+    this.orderService.submitOrder(this.orderNumber).subscribe((result: any) => {
+      this.status = result.success;
+    });
+    
+  }
 
 }
 
