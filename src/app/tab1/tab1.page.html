@@ -19,15 +19,18 @@
 
     <ion-item>
       <ion-label position="floating">מספר הזמנה</ion-label>
-      <ion-input type="number" placeholder="000000"></ion-input>
+      <ion-input type="number" [(ngModel)]="orderNumber" placeholder="000000"></ion-input>
     </ion-item>
   
     <ion-text name="title" color="primary">
       <h1>הקלד מספר הזמנה והמשך</h1>
     </ion-text>
+    <ion-text name="title" color="primary">
+      <h1>{{status ? 'success': 'failed'}}</h1>
+    </ion-text>
     <ion-toolbar>
       <ion-buttons slot="secondary">
-        <ion-button fill="solid">
+        <ion-button (click)="sendOrder()" fill="solid">
           המשך
         </ion-button>
       </ion-buttons>
